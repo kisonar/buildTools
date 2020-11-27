@@ -13,7 +13,6 @@ resource "openstack_compute_instance_v2" "instance" {
     name = ""
   }
 }
-# attach single disk to single VM
 resource "openstack_compute_volume_attach_v2" "attachment" {
   instance_id = "${openstack_compute_instance_v2.instance.id}"
   volume_id   = "${openstack_blockstorage_volume_v3.volume.id}"
@@ -35,7 +34,6 @@ resource "openstack_compute_instance_v2" "instances" {
     name = ""
   }
 }
-
 resource "openstack_compute_volume_attach_v2" "attachments" {
   count       = 3
   instance_id = "${openstack_compute_instance_v2.instances.*.id[count.index]}"
