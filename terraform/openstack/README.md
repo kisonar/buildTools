@@ -7,6 +7,7 @@ terraform --version ==> Terraform v0.13.5
 terraform 0.13upgrade ==> OK
 terraform --version  ==> Terraform v0.13.5
 
-terraform plan
-terraform apply
+terraform plan -auto-approve
+terraform apply -auto-approve
+terraform destroy -auto-approve
 ```

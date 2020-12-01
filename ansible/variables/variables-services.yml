@@ -26,4 +26,6 @@ oracle_11xe_rpm_location: /run/media/marcin/MigiBigDisk/repozytoria/repo-install
 oracle_11xe_rpm_name: oracle-xe-11.2.0-1.0.x86_64.rpm
 
 #Gluster FS
-gluster_volume_name: gluster
+gluster_volume_name: gluster-volume
+gluster_brick_name: gluster-brick
+gluster_client_name: gluster-client
