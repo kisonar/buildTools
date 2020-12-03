@@ -1,0 +1,23 @@
+- name: Linux GlusterFS - Create gluster brick directory on each node
+  file:
+    path: /{{ gluster_brick_name }}
+    state: directory
+    mode: u=rwx,g=rwx,o=rwx #777
+    owner: "{{ user_root }}"
+    group: "{{ user_root }}"
+
+- name: Linux GlusterFS - Create gluster volume directory on each node
+  file:
+    path: /{{ gluster_brick_name }}/{{ gluster_volume_name }}
+    state: directory
+    mode: u=rwx,g=rwx,o=rwx #777
+    owner: "{{ user_root }}"
+    group: "{{ user_root }}"
+
+- name: Linux GlusterFS - Create gluster client
+  file:
+    path: /{{ gluster_client_name }}
+    state: directory
+    mode: u=rwx,g=rwx,o=rwx #777
+    owner: "{{ user_root }}"
+    group: "{{ user_root }}"

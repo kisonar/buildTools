@@ -1,27 +1,3 @@
-- name: Linux GlusterFS - Create gluster brick directory on each node
-  file:
-    path: /{{ gluster_brick_name }}
-    state: directory
-    mode: u=rwx,g=rwx,o=rwx #777
-    owner: "{{ user_root }}"
-    group: "{{ user_root }}"
-
-- name: Linux GlusterFS - Create gluster volume directory on each node
-  file:
-    path: /{{ gluster_brick_name }}/{{ gluster_volume_name }}
-    state: directory
-    mode: u=rwx,g=rwx,o=rwx #777
-    owner: "{{ user_root }}"
-    group: "{{ user_root }}"
-
-- name: Linux GlusterFS - Create gluster client
-  file:
-    path: /{{ gluster_client_name }}
-    state: directory
-    mode: u=rwx,g=rwx,o=rwx #777
-    owner: "{{ user_root }}"
-    group: "{{ user_root }}"
-
 - name: Linux GlusterFS - Form a cluster - peer nodes.
   command: "gluster peer probe {{ peernode }}"
   loop: "{{ ansible_play_hosts | flatten(levels=1) }}"
@@ -31,43 +7,46 @@
     pause: 3
   ignore_errors: yes
 
-- name: Linux GlusterFS - Configure gluster volume
-  gluster.gluster.gluster_volume:
-    state: present
-    name: "{{ gluster_volume_name }}"
-    bricks: /{{ gluster_brick_name }}/{{ gluster_volume_name }}
-    rebalance: yes
-    #redundancies: 2
-    replicas: 2
-    cluster: "{{ hostvars | join(',') }}"
-    force: true # has to be forced when you mount at root partition brick
-    transport: tcp
-    #stripes: 2
-    options:
-      { performance.cache-size: 128MB,
-        write-behind: 'on',
-        quick-read: 'on'
-      }
-  run_once: true
+#- name: Linux GlusterFS - Configure gluster volume
+#  gluster.gluster.gluster_volume:
+#    state: present
+#    name: "{{ gluster_volume_name }}"
+#    bricks: /{{ gluster_brick_name }}/{{ gluster_volume_name }}
+#    rebalance: yes
+#    #redundancies: 2
+#    replicas: 2
+#    cluster: "{{ hostvars | join(',') }}"
+#    force: true # has to be forced when you mount at root partition brick
+#    transport: tcp
+#    #stripes: 2
+#    options:
+#      { performance.cache-size: 128MB,
+#        write-behind: 'on',
+#        quick-read: 'on'
+#      }
+#  run_once: true
 
-- name: Linux GlusterFS - Ensure Gluster mount client
-  command: mount -t glusterfs {{ inventory_hostname }}:/{{ gluster_brick_name }}/{{ gluster_volume_name }} /{{ gluster_client_name }}
-#- name: Linux GlusterFS - Ensure Gluster volume is mounted.
-#  mount:
-#    name: "{{ gluster_client_name }}"
-#    src: "{{ inventory_hostname }}:/{{ gluster_volume_name }}"
-#    fstype: glusterfs
-#    opts: "defaults,_netdev"
-#    state: mounted
+# - name: Linux GlusterFS - Ensure Gluster mount client
+#   command: mount -t glusterfs {{ inventory_hostname }}:/{{ gluster_brick_name }}/{{ gluster_volume_name }} /{{ gluster_client_name }}
+# #- name: Linux GlusterFS - Ensure Gluster volume is mounted.
+# #  mount:
+# #    name: "{{ gluster_client_name }}"
+# #    src: "{{ inventory_hostname }}:/{{ gluster_volume_name }}"
+# #    fstype: glusterfs
+# #    opts: "defaults,_netdev"
+# #    state: mounted
 
-- name: Linux GlusterFS - Stop gluster volume
-  gluster.gluster.gluster_volume:
-    state: stopped
-    name: "{{ gluster_volume_name }}"
-  run_once: true
+# - name: Linux GlusterFS - Stop gluster volume
+#  gluster.gluster.gluster_volume:
+#    state: stopped
+#    name: "{{ gluster_volume_name }}"
+#  run_once: true
 
-- name: Linux GlusterFS - Start gluster volume
-  gluster.gluster.gluster_volume:
-    state: started
-    name: "{{ gluster_volume_name }}"
-  run_once: true
+#- name: Linux GlusterFS - Start gluster volume
+#  gluster.gluster.gluster_volume:
+#    state: started
+#    name: "{{ gluster_volume_name }}"
+#  run_once: true
+
+## steps
+# gluster peer probe node02

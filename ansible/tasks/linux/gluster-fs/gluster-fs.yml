@@ -1,2 +1,3 @@
 - import_tasks: ./install/gluster-install.yml
+- import_tasks: ./configure/gluster-infrastructure.yml
 - import_tasks: ./configure/gluster-configure.yml
