@@ -33,4 +33,4 @@
       tags: "{{ tag_random_logger }}"
     - import_tasks: ./tasks/services/httpd/httpd.yml
       tags: "{{ tag_httpd }}"
-    - import_tasks: ./tasks/services/vpn-wireguard/wireguard.yml
+    - import_tasks: ./tasks/services/vpn/wireguard/wireguard.yml

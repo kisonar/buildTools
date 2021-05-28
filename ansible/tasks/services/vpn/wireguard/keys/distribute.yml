@@ -9,7 +9,7 @@
   tags: "{{ tag_wireguard_keys_distribute }}"
 - name: VPN WireGuard - copy Server public key
   copy:
-    src: ./stuff/services/vpn-wireguard/keys/keyServerPublic
+    src: ./stuff/services/vpn/wireguard/keys/keyServerPublic
     dest: /root/keyPublic
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -19,7 +19,7 @@
 
 - name: VPN WireGuard - copy Client private key
   copy:
-    src: ./stuff/services/vpn-wireguard/keys/keyClientPrivate
+    src: ./stuff/services/vpn/wireguard/keys/keyClientPrivate
     dest: /root/keyPrivate
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -28,7 +28,7 @@
   tags: "{{ tag_wireguard_keys_distribute }}"
 - name: VPN WireGuard - copy Client public key
   copy:
-    src: ./stuff/services/vpn-wireguard/keys/keyClientPublic
+    src: ./stuff/services/vpn/wireguard/keys/keyClientPublic
     dest: /root/keyPublic
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -38,7 +38,7 @@
 
 - name: VPN WireGuard - copy Client private key
   copy:
-    src: ./stuff/services/vpn-wireguard/keys/keyClientPrivateAnother
+    src: ./stuff/services/vpn/wireguard/keys/keyClientPrivateAnother
     dest: /root/keyPrivate
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -47,7 +47,7 @@
   tags: "{{ tag_wireguard_keys_distribute }}"
 - name: VPN WireGuard - copy Client public key
   copy:
-    src: ./stuff/services/vpn-wireguard/keys/keyClientPublicAnother
+    src: ./stuff/services/vpn/wireguard/keys/keyClientPublicAnother
     dest: /root/keyPublic
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"

@@ -4,7 +4,7 @@
 
 - name: VPN WireGuard - copy sysctl.conf with IP V4 setup
   copy:
-    src: ./stuff/services/vpn-wireguard/sysctl.conf
+    src: ./stuff/services/vpn/wireguard/sysctl.conf
     dest: /etc/sysctl.conf
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -24,7 +24,7 @@
 
 - name: VPN WireGuard - copy server configuration to VM-0 server
   template:
-    src: ./stuff/services/vpn-wireguard/server/wg0.conf
+    src: ./stuff/services/vpn/wireguard/server/wg0.conf
     dest: /etc/wireguard/wg0.conf
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -33,7 +33,7 @@
 
 - name: VPN WireGuard - copy client configuration to VM-1 client
   template:
-    src: ./stuff/services/vpn-wireguard/client/wg0.conf
+    src: ./stuff/services/vpn/wireguard/client/wg0.conf
     dest: /etc/wireguard/wg0.conf
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"
@@ -42,7 +42,7 @@
 
 - name: VPN WireGuard - copy client configuration to VM-2 client
   template:
-    src: ./stuff/services/vpn-wireguard/client-another/wg0.conf
+    src: ./stuff/services/vpn/wireguard/client-another/wg0.conf
     dest: /etc/wireguard/wg0.conf
     mode: u=rw,g=r,o=r #644
     owner: "{{ user_root }}"

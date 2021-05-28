@@ -35,6 +35,7 @@ tag_lb_nginx: nginx
 tag_netbeans: netbeans
 tag_nload: nload
 tag_open_ldap: open-ldap
+tag_openvpn_install: openvpn-install
 tag_oracle_11xe_classic: oracle11xe-classic
 tag_oracle_11xe_docker: oracle11xe-docker
 tag_proxy: proxy
